@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 function AddEmployee() {
 
     const [inputs, setInputs] = useState({
-        EmployeeId: "", EmployeeName: "", Department: "", Salary: "" //Variables declared with initially no values to update values from web page
+        EmployeeId: "", EmployeeName: "", Department: "", Salary: "" //Variables declared with initially no values and updates values from web page
     })
 
     //Function to handle changes and update it
@@ -37,6 +37,7 @@ function AddEmployee() {
         sendRequest()
             .then(data => console.log(data)) //Prents the inserted data in the console
             .then(() => alert("Employee Added")) //If data added successfully
+            .catch(()=> alert("Already Exist"))  //Already existing employee
     }
 
     return (
@@ -55,13 +56,13 @@ function AddEmployee() {
                     Add Employee
                 </Typography>
                 <InputLabel variant='h6'>EmployeeId</InputLabel>
-                <TextField name='EmployeeId' onChange={handleChange} value={inputs.EmployeeId} variant='outlined' />
+                <TextField name='EmployeeId' onChange={handleChange} value={inputs.EmployeeId} variant='outlined' required/>
                 <InputLabel variant='h6'>EmployeeName</InputLabel>
-                <TextField name='EmployeeName' onChange={handleChange} value={inputs.EmployeeName} variant='outlined' />
+                <TextField name='EmployeeName' onChange={handleChange} value={inputs.EmployeeName} variant='outlined' required/>
                 <InputLabel variant='h6'>Department</InputLabel>
-                <TextField name='Department' onChange={handleChange} value={inputs.Department} variant='outlined' />
+                <TextField name='Department' onChange={handleChange} value={inputs.Department} variant='outlined' required/>
                 <InputLabel variant='h6'>Salary</InputLabel>
-                <TextField name='Salary' onChange={handleChange} value={inputs.Salary} variant='outlined' /><br />
+                <TextField name='Salary' onChange={handleChange} value={inputs.Salary} variant='outlined' label='INR' required/><br />
                 <Button type="submit" sx={{ mt: 2, borderRadius: 4 }} variant='contained' color='warning'>Submit</Button>
             </form>
         </div>
