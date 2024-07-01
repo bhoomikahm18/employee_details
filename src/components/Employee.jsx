@@ -7,8 +7,8 @@ function Employee() {
     const [employees, setEmployees] = useState();
 
     async function getEmployeeList() {
-        //Useing axios to send request and get respose from the backend
-        const res = await axios.get("/list") //.get is used to get all data from database
+        //Using axios to send request and get respose from the backend
+        const res = await axios.get("/list") //get() method is used to get all data from database
             .catch((err) => console.log(err));
 
         //Checking error when no data found at database
